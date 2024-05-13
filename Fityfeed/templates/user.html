@@ -1,0 +1,80 @@
+{% extends 'main.html' %}
+{% block content %}
+<head> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></head>
+<h3>Общее количество продуктов, потребленных сегодня: {{cnt}}</h3>
+
+<div class="today">
+	<h2>Трекер</h2>
+	<div class="flex-box-row">
+		<h3>Лимит калорий: 2000</h3>
+		<h3>Всего потреблено калорий: {{totalCalories}}</h3>
+		<h3>Осталось: {{ CalorieLeft }}</h3>
+	</div>
+
+    <div class="card card-body">
+        <table>
+            <tr>
+                <th>Продукт</th>
+                <th>Калории</th>
+                <th>Углеводы</th>
+                <th>Жиры</th>
+                <th>Белки</th>
+            </tr>
+            {% for food in foodlist %}
+            <tr>
+                <td>{{food.name}}</td>
+                <td> {{food.calorie}}</td>
+                <td> {{food.carbohydrate}}</td>
+                <td> {{food.fats}}</td>
+				<td> {{food.protein}}</td>
+			</tr>
+            {% endfor %}
+        </table>
+	</div>
+	<form action="{% url 'addFooditem' %}" method="POST">
+		{%csrf_token%}
+		<button type="submit" class="btn btn-success">
+			<span class="glyphicon glyphicon-plus"></span>
+		</button>
+	</form>
+</div>
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+				{{myfilter.form}}
+		    <button class="btn btn-primary" type="submit">Поиск</button>
+		  </form>
+		</div>
+	</div>
+</div>
+<br>
+<hr>
+<h3>Доступные продукты:</h3>
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Продукт</th>
+					<th>Калории</th>
+					<th>Углеводы</th>
+					<th>Жиры</th>
+					<th>Белки</th>
+				</tr>
+				{% for food in fooditem %}
+				<tr>
+					<td>{{food.name}}</td>
+					<td> {{food.calorie}}</td>
+					<td> {{food.carbohydrate}}</td>
+                    <td> {{food.fats}}</td>
+                    <td> {{food.protein}}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

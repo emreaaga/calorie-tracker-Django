@@ -1,0 +1,116 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="flex-box-row">
+        <br>
+        <br>
+        <h5 id="heading">Завтрак</h5>
+        <h7>Всего опций:{{bcnt}}</h7>
+            <a class="btn btn-primary btn-sm btn-block" href="{% url 'createfooditem' %}">Добавить еще опций</a>
+            <table class="table table-sm">
+                <tr>
+                    <th>Название</th>
+                    <th>Углеводы</th>
+                    <th>Жиры</th>
+                    <th>Белки</th>
+                    <th>Калории</th>
+
+                </tr>
+               {% for items in breakfast %}
+                <tr>
+                    <td>{{items.name}} </td>
+                    <td>{{items.carbohydrate}} </td>
+                    <td>{{items.fats}} </td>
+                    <td>{{items.protein}} </td>
+                    <td>{{items.calorie}} </td>
+                    </tr>
+
+                {% endfor %}
+            </table>
+    </div>
+    <br>
+<!---------------------------->
+    <div class="flex-box-row">
+        <h5 id="heading">Обед</h5>
+        <h7>Всего опций:{{lcnt}}</h7>
+
+            <a class="btn btn-primary btn-sm btn-block" href="{% url 'createfooditem' %}">Добавить еще опций</a>
+            <table class="table table-sm">
+                <tr>
+                    <th>Название</th>
+                    <th>Углеводы</th>
+                    <th>Жиры</th>
+                    <th>Белки</th>
+                    <th>Калории</th>
+
+                </tr>
+               {% for items in lunch %}
+                <tr>
+                    <td>{{items.name}} </td>
+                    <td>{{items.carbohydrate}} </td>
+                    <td>{{items.fats}} </td>
+                    <td>{{items.protein}} </td>
+                    <td>{{items.calorie}} </td>
+                    </tr>
+
+                {% endfor %}
+            </table>
+
+    </div>
+    <br>
+<!------------------------------------------->
+    <div class="flex-box-row">
+        <h5 id="heading">Перекусы</h5>
+        <h7>Всего опций:{{scnt}}</h7>
+            <a class="btn btn-primary btn-sm btn-block" href="{% url 'createfooditem' %}">Добавить еще опций</a>
+            <table class="table table-sm">
+                <tr>
+                    <th>Название</th>
+                    <th>Углеводы</th>
+                    <th>Жиры</th>
+                    <th>Белки</th>
+                    <th>Калории</th>
+
+                </tr>
+               {% for items in snacks %}
+                <tr>
+                    <td>{{items.name}} </td>
+                    <td>{{items.carbohydrate}} </td>
+                    <td>{{items.fats}} </td>
+                    <td>{{items.protein}} </td>
+                    <td>{{items.calorie}} </td>
+                    </tr>
+
+                {% endfor %}
+            </table>
+    </div>
+    <br>
+<!-------------------------------------->
+    <div class="flex-box-row">
+        <h5 id="heading">Ужин</h5>
+        <h7>Всего опций:{{dcnt}}</h7>
+            <a class="btn btn-primary btn-sm btn-block" href="{% url 'createfooditem' %}">Добавить еще опций</a>
+            <table class="table table-sm">
+                <tr>
+                    <th>Название</th>
+                    <th>Углеводы</th>
+                    <th>Жиры</th>
+                    <th>Белки</th>
+                    <th>Калории</th>
+                </tr>
+               {% for items in dinner %}
+                <tr>
+                    <td>{{items.name}} </td>
+                    <td>{{items.carbohydrate}} </td>
+                    <td>{{items.fats}} </td>
+                    <td>{{items.protein}} </td>
+                    <td>{{items.calorie}} </td>
+                    </tr>
+
+                {% endfor %}
+            </table>
+    </div>
+    <br>
+</div>
+{% endblock %}
